@@ -2,10 +2,26 @@
 <html>
   <head>
     <title>Favorite Color</title>
+    <script>
+      function handleSubmit(event) {
+        event.preventDefault(); // Prevent form submission
+
+        // Get values from the form
+        const color = document.getElementById('color').value;
+        const num = document.getElementById('num').value;
+
+        // Multiply the number by 2
+        const multipliedNum = num * 2;
+
+        // Display the results in a more user-friendly way
+        const resultDiv = document.getElementById('result');
+        resultDiv.innerHTML = `Your favorite color is <strong>${color}</strong>. ${num} multiplied by 2 is <strong>${multipliedNum}</strong>.`;
+      }
+    </script>
   </head>
   <body>
 
-    <form action='/response'>
+    <form onsubmit="handleSubmit(event)">
       <label for="color">What is your favorite color?</label>
       <br>
       <input type="text" name="color" id="color">
@@ -15,8 +31,11 @@
       <br>
       <input type="number" name="multNum" id="num" required>
       <br><br>
-      <input type="submit">
+      <input type="submit" value="Submit">
     </form>
+
+    <!-- Div to display the result -->
+    <div id="result" style="margin-top: 20px;"></div>
 
   </body>
 </html>
